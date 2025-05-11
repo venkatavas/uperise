@@ -1,0 +1,640 @@
+<uperise.com html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Uperise - Software Solutions</title>
+<header>
+  <div class="container">
+    <div class="header-content">
+      <a href="index.html" class="logo">
+        <img src="assets/logo2.png" alt="Company Logo" style="max-width: auto; height: 50px;">
+      </a>
+      <nav>
+        <ul>
+          <li><a href="#">Home</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#careers">Careers</a></li>
+          <li><a href="#about">About Us</a></li>
+          <li><a href="#company">Company Profile</a></li>
+          <li>
+            <a href="#locations">Locations</a>
+            <div class="location-hover">
+              📍 Nellore (Headquarters)<br>
+              📍 Hyderabad<br>
+              📍 Bangalore
+            </div>
+          </li>
+          <li>
+            <a href="#contact">Contact</a>
+            <div class="contact-hover">
+              📧 info@uperise.com<br>
+              📱 +91 7674050595
+            </div>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+</header>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body, html { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.2; }
+    .container { width: 90%; max-width: 1200px; margin: 0 auto; }
+
+header {
+  background-color: #0d1f54;
+  color: #fff;
+  padding: 15px 10px;
+}
+
+.header-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+nav { 
+  display: flex;
+  align-items: center;
+}
+    nav ul { list-style: none; display: flex; gap: 20px; }
+    nav ul li { position: relative; }
+    nav ul li a {
+      color: #fff;
+      text-decoration: none;
+      padding: 10px 20px;
+      display: block;
+      background-color: #0d1f54;
+      border-radius: 50px;
+      font-weight: bold;
+      transition: background-color 0.3s ease;
+    }
+
+    nav ul li a:hover {
+      background-color: #FF9A3E;
+    }
+
+    nav ul li:hover > .dropdown {
+      display: flex;
+    }
+
+    .dropdown {
+      position: absolute;
+      top: 60px;
+      left: 0;
+      background: #1b1b2f;
+      display: none;
+      padding: 20px;
+      border-radius: 10px;
+      z-index: 1000;
+      gap: 40px;
+    }
+
+    .dropdown-column strong {
+      color: white;
+      display: block;
+      margin-bottom: 10px;
+      font-size: 1.1rem;
+    }
+
+    .dropdown-column ul {
+      list-style: none;
+    }
+
+    .dropdown-column ul li a {
+      background-color: #0d1f54;
+      color: #fff;
+      border-radius: 8px;
+      padding: 8px 12px;
+      margin-bottom: 5px;
+      display: block;
+      text-decoration: none;
+      font-size: 0.95rem;
+    }
+
+    .dropdown-column ul li a:hover {
+      background-color: #0d1f54;
+    }
+
+    .contact-hover, .location-hover {
+      position: absolute;
+      top: 60px;
+      left: 0;
+      background: #0d1f54;
+      color: #ff7a45;
+      padding: 15px;
+      display: none;
+      border-radius: 10px;
+      z-index: 1000;
+      font-size: 0.95rem;
+      white-space: nowrap;
+    }
+
+    nav ul li:hover .contact-hover,
+    nav ul li:hover .location-hover {
+      display: block;
+    }
+
+    .hero {
+      background: url('https://i.pinimg.com/originals/d7/64/c7/d764c70776b64e523cb4eea2f322db96.gif') no-repeat center center/cover;
+      color: #fff;
+      text-align: center;
+      padding: 100px 20px;
+      clear: both;
+    }
+ 
+    .hero h2 { font-size: 2.8rem; margin-bottom: 10px; text-shadow: 1px 1px 4px #000; }
+    .hero p { font-size: 1.2rem; margin-bottom: 20px; text-shadow: 1px 1px 4px #000; }
+    .btn { padding: 10px 20px; background-color: #ff7a45; color: #fff; text-decoration: none; border-radius: 5px; }
+
+
+    .popup {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: #ff7a45;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+      padding: 30px;
+      border-radius: 10px;
+      z-index: 2000;
+      display: none;
+      text-align: center;
+    }
+
+    .popup img {
+      max-width: 300px;
+      height: auto;
+    }
+
+    .popup button {
+      margin-top: 15px;
+      padding: 8px 16px;
+      background-color: #0074D9;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .popup button:hover {
+      background-color: #005fa3;
+    }
+
+    section {
+      padding: 60px 0;
+      background-color: #f4f4f4;
+      text-align: center;
+    }
+
+    .services img, .careers img, .culture img {
+      width: 100px;
+      margin-bottom: 15px;
+    }
+
+    .service-grid {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-top: 30px;
+    }
+
+    .service-card {
+      background: #fff;
+      padding: 20px;
+      flex: 1;
+      min-width: 250px;
+      max-width: 300px;
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+
+    .job-listing {
+      margin: 20px auto;
+      max-width: 700px;
+      text-align: left;
+    }
+
+    .job {
+      background: #fff;
+      border-radius: 8px;
+      margin-bottom: 10px;
+      padding: 15px;
+      cursor: pointer;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+
+    .job:hover { background: #e8f0fe; }
+
+    .job-details {
+      display: none;
+      margin-top: 10px;
+    }
+
+    .job.open .job-details {
+      display: block;
+    }
+.job {
+  background: #fff;
+  border-left: 5px solid #ff7a45;
+  border-radius: 8px;
+  margin-bottom: 15px;
+  padding: 20px;
+  cursor: pointer;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.08);
+  transition: all 0.3s ease-in-out;
+  position: relative;
+}
+
+.job:hover {
+  transform: translateY(-3px);
+  background-color: #ff4f6d;
+}
+
+.job h4 {
+  font-size: 1.2rem;
+  margin-bottom: 5px;
+  color: #0d1f54;
+}
+
+.job-details {
+  display: none;
+  margin-top: 15px;
+  font-size: 0.95rem;
+}
+
+.job.open .job-details {
+  display: block;
+}
+
+.badge {
+  padding: 3px 8px;
+  font-size: 0.75rem;
+  border-radius: 50px;
+  margin-left: 10px;
+}
+
+.badge.closed {
+  background: #ccc;
+  color: #333;
+}
+
+.badge.open {
+  background: #4CAF50;
+  color: #fff;
+}
+
+.job-details a {
+  display: inline-block;
+  margin-top: 10px;
+  background: #0074D9;
+  color: #fff;
+  padding: 6px 12px;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background 0.3s ease;
+}
+
+.job-details a:hover {
+  background: #005fa3;
+}
+
+    footer {
+      background: #0d1f54;
+      color: #fff;
+      text-align: center;
+      padding: 20px 0;
+      margin-top: 80px;
+    }
+.explore {
+  background-color: #fff;
+  padding: 60px 0;
+  text-align: center;
+}
+
+.explore-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  margin-top: 30px;
+}
+
+.explore-card {
+  background: #7ad1ff;
+  padding: 20px;
+  min-width: 250px;
+  max-width: 300px;
+  flex: 1;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  transition: transform 0.2s ease;
+}
+
+.explore-card:hover {
+  transform: translateY(-5px);
+}
+
+.explore-card h4 {
+  color: #0d1f54;
+  margin-bottom: 10px;
+}
+
+.explore-card p {
+  font-size: 0.95rem;
+  color: #333;
+}
+
+.explore-card img {
+  width: 50px;
+  height: auto;
+  margin-bottom: 10px;
+}
+
+.about {
+  background-image: url('assets/logo.jpg'); 
+  background-size: cover;
+  background-position: center;
+  color:whitesmoke;
+  padding: 80px 20px;
+  position: relative;
+}
+
+.about::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 24, 64, 0.6); 
+  z-index: 0;
+}
+
+.about .container {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+}
+
+.about h3 {
+  font-size: 2.2rem;
+  margin-bottom: 20px;
+}
+
+.about p {
+  font-size: 1.1rem;
+  max-width: 800px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+.portfolio {
+  background-color: #fff;
+  padding: 60px 0;
+  text-align: center;
+}
+
+.portfolio h3 {
+  font-size: 2rem;
+  color: #0d1f54;
+  margin-bottom: 40px;
+}
+
+.portfolio-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+}
+
+.portfolio-item {
+  background: #f9f9f9;
+  border-radius: 10px;
+  overflow: hidden;
+  width: 250px;
+  transition: transform 0.3s;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.portfolio-item:hover {
+  transform: scale(1.05);
+}
+
+.portfolio-item img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+.portfolio-item p {
+  margin: 10px 0;
+  font-weight: bold;
+  color: #0d1f54;
+  text-decoration: none;
+}
+
+/* ... Above all full CSS  ... */
+  
+</style>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      document.querySelectorAll('.job').forEach(job => {
+        job.addEventListener('click', () => job.classList.toggle('open'));
+      });
+
+      const popup = document.getElementById('updatePopup');
+      const closeBtn = document.getElementById('closePopup');
+      popup.style.display = 'block';
+      closeBtn.addEventListener('click', () => {
+        popup.style.display = 'none';
+      });
+    });
+  </script>
+</head>
+<body>
+  <div class="popup" id="updatePopup">
+   <img src="assets/phonelogo.jpg" alt="Specific inquiries:" />
+    <p>📢 Check out today's updates at Uperise!</p>
+	<p>Sai Sathish</p>
+	<p>Marketing Director</p>
+	<p> Email : sai@uperise.com</p>
+    <button id="closePopup">Close</button>
+  </div>
+
+  
+  <section class="hero">
+    <div class="container">
+      <h2>Empowering Business with Innovative Software</h2>
+      <p>Custom software, analytics, and IT solutions tailored to your growth.</p>
+      <a href="#services" class="btn">Explore Services</a>
+    </div>
+  </section>
+
+<section class="explore" id="explore">
+  <div class="container">
+    <h3>Why UPERISE</h3>
+	<h3>Empowering people and organizations to conquer new frontiers.</h3>
+    <div class="explore-grid">
+      <div class="explore-card">
+        <img src="https://cdn-icons-png.flaticon.com/512/847/847969.png" alt="Expertise Icon">
+        <h4>IT Consulting</h4>
+        <p>Strategic IT guidance for scalable, secure, and modern infrastructure.</p>
+      </div>
+      <div class="explore-card">
+        <img src="https://cdn-icons-png.flaticon.com/512/847/847969.png" alt="Expertise Icon">
+        <h4>Data Analytics</h4>
+        <p>Transform data into insights with BI, dashboards, and reporting solutions.</p>
+      </div>
+      <div class="explore-card">
+        <img src="https://cdn-icons-png.flaticon.com/512/847/847969.png" alt="Expertise Icon">
+        <h4>Application Modernization</h4>
+        <p>Revamp legacy systems for better performance, security, and user experience.</p>
+      </div>
+      <div class="explore-card">
+        <img src="https://cdn-icons-png.flaticon.com/512/847/847969.png" alt="Expertise Icon">
+        <h4>Training & Upskilling</h4>
+        <p>Hands-on courses in analytics, development, and digital tools.</p>
+      </div>
+      <div class="explore-card">
+        <img src="https://cdn-icons-png.flaticon.com/512/847/847969.png" alt="Expertise Icon">
+        <h4>Tax & Accounting Solutions</h4>
+        <p>Automation and digital tools for GST, income tax, and compliance.</p>
+      </div>
+      <div class="explore-card">
+        <img src="https://cdn-icons-png.flaticon.com/512/847/847969.png" alt="Expertise Icon">
+        <h4>Marketing Services</h4>
+        <p>Digital-first strategies to grow your brand across online platforms.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+  <section class="services" id="services">
+    <div class="container">
+      <h3>Our Services</h3>
+      <div class="service-grid">
+        <div class="service-card">
+          <img src="https://cdn-icons-png.flaticon.com/512/609/609803.png" alt="Web Development">
+          <h4>Functionally Beautiful Websites</h4>
+          <p>Design-driven development for high-conversion business websites.</p>
+        </div>
+        <div class="service-card">
+          <img src="https://cdn-icons-png.flaticon.com/512/1038/1038670.png" alt="UX/UI Design">
+          <h4>UX/UI Design</h4>
+          <p>Intuitive, aesthetic, and user-first design solutions for mobile and web.</p>
+        </div>
+        <div class="service-card">
+          <img src="https://cdn-icons-png.flaticon.com/512/1010/1010982.png" alt="Digital Marketing">
+          <h4>Digital Marketing</h4>
+          <p>Boost your online presence with SEO, PPC, and content strategy.</p>
+        </div>
+        <div class="service-card">
+          <img src="https://cdn-icons-png.flaticon.com/512/2504/2504941.png" alt="Web Hosting">
+          <h4>Web Hosting</h4>
+          <p>Reliable and secure web hosting services with 99.9% uptime.</p>
+        </div>
+        <div class="service-card">
+          <img src="https://cdn-icons-png.flaticon.com/512/3064/3064197.png" alt="Web Applications">
+          <h4>Web Applications</h4>
+          <p>Scalable web applications tailored to your business needs.</p>
+        </div>
+        <div class="service-card">
+          <img src="https://cdn-icons-png.flaticon.com/512/1674/1674291.png" alt="Mobile Apps">
+          <h4>Mobile Apps</h4>
+          <p>Native and hybrid mobile apps for iOS and Android platforms.</p>
+        </div>
+        <div class="service-card">
+          <img src="https://cdn-icons-png.flaticon.com/512/3142/3142100.png" alt="eCommerce">
+          <h4>eCommerce</h4>
+          <p>Custom eCommerce solutions to grow your online store.</p>
+        </div>
+        <div class="service-card">
+          <img src="https://cdn-icons-png.flaticon.com/512/906/906343.png" alt="CMS">
+          <h4>CMS</h4>
+          <p>Manage your content easily with powerful CMS platforms.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+<section class="about" id="about">
+  <div class="container">
+      <h3>About US</h3>
+      <p><strong>Company Name:</strong> Uperise IT Consulting Private Limited</p>
+      
+      <p><strong>Founded:</strong> 8 January 2024</p>
+      <p><strong>What We Provide:</strong> Web and Mobile Applications; Software Testing; Microsoft Dynamics; Consulting Services; BPO;  Hosting and Digital Marketing; Loan Recovery Agency.  </p>
+      <p><strong>Employee Strength:</strong> 25+ skilled professionals</p>
+      <p><strong>Locations:</strong> Nellore (HQ), Hyderabad, Bangalore – India</p>
+    </div>
+  </section>
+
+
+
+
+<section id="contact">
+  <div class="container" style="text-align: center;">
+    <!-- Logo -->
+    <img src="assets/Company_logo.jpg" alt="Uperise Logo" style="max-width: 150px; margin-bottom: 20px;">
+
+
+  <section class="careers" id="careers">
+  <div class="container">
+    <h3>Careers at Uperise</h3>
+    <p>Join our dynamic team and be part of building innovative solutions.</p>
+    <div class="job-listing">
+      <div class="job">
+        <h4>Frontend Developer (Remote)</h4>
+        <div class="job-details">
+          <p><strong>Skills:</strong> HTML, CSS, JavaScript, React</p>
+          <p><strong>Experience:</strong> 0 - 1+ Years</p>
+          <p><strong>To Apply:</strong> Email your resume to <a href="mailto:hr@uperise.com">hr@uperise.com</a></p>
+        </div>
+      </div>
+      <div class="job">
+        <h4>Data Analyst <span class="badge closed">Closed</span></h4>
+        <div class="job-details">
+          <p><strong>Skills:</strong> SQL, Power BI, Excel</p>
+          <p><strong>Experience:</strong> Internship</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="portfolio" id="portfolio">
+  <div class="container">
+    <h3>Our Portfolio</h3>
+    <div class="portfolio-grid">
+      <div class="portfolio-item">
+        <a href=https://atmos24.in/ target="_blank">
+          <img src="assets/atmos.jpg" alt=>
+          <p>ATMOS24</p>
+        </a>
+      </div>
+      <div class="portfolio-item">
+        <a href=https://shrivaaz.com/ target="_blank">
+          <img src="assets/shivaraaz.jpg" alt="Project 2">
+          <p>SHRIVAAZ</p>
+        </a>
+      </div>
+      <!-- Add more items as needed -->
+    </div>
+  </div>
+</section>
+
+
+
+  <footer id="contact">
+    <div class="container">
+      <p>Visit us at <a href="https://www.uperise.com" style="color: #fff; text-decoration: underline;">www.uperise.com</a> | Contact us at <a href="mailto:info@uperise.com" style="color: #fff; text-decoration: underline;">info@uperise.com</a> | Mobile +91 7674050595</p>
+</div>
+</footer>
+</body>
+</html>
