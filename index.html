@@ -1,78 +1,166 @@
-<uperise.com html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Uperise - Software Solutions</title>
-<header>
-  <div class="container">
-    <div class="header-content">
-      <a href="index.html" class="logo">
-        <img src="assets/logo2.png" alt="Company Logo" style="max-width: auto; height: 50px;">
-      </a>
-      <nav>
-        <ul>
-          <li><a href="#">Home</a></li>
-          <li><a href="#services">Services</a></li>
-          <li><a href="#careers">Careers</a></li>
-          <li><a href="#about">About Us</a></li>
-          <li><a href="#company">Company Profile</a></li>
-          <li>
-            <a href="#locations">Locations</a>
-            <div class="location-hover">
-              📍 Nellore (Headquarters)<br>
-              📍 Hyderabad<br>
-              📍 Bangalore
-            </div>
-          </li>
-          <li>
-            <a href="#contact">Contact</a>
-            <div class="contact-hover">
-              📧 info@uperise.com<br>
-              📱 +91 7674050595
-            </div>
-          </li>
-        </ul>
-      </nav>
-    </div>
-  </div>
-</header>
   <style>
+    /* Base responsive styles */
     * { margin: 0; padding: 0; box-sizing: border-box; }
-    body, html { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.2; }
-    .container { width: 90%; max-width: 1200px; margin: 0 auto; }
+    body, html { 
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+      line-height: 1.2;
+      overflow-x: hidden;
+    }
+    
+    .container { 
+      width: 90%; 
+      max-width: 1200px; 
+      margin: 0 auto; 
+      padding: 0 15px;
+    }
 
-header {
-  background-color: #0d1f54;
-  color: #fff;
-  padding: 15px 10px;
-}
+    .page-wrapper {
+      width: 100%;
+      max-width: 100%;
+      overflow-x: hidden;
+    }
+    
+    /* Responsive header */
+    header {
+      background-color: #0d1f54;
+      color: #fff;
+      padding: 15px 10px;
+      width: 100%;
+    }
 
-.header-content {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
+    .header-content {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
 
-nav { 
-  display: flex;
-  align-items: center;
-}
-    nav ul { list-style: none; display: flex; gap: 20px; }
+    .logo img {
+      max-width: 100px;
+      height: auto;
+    }
+
+    /* Responsive navigation */
+    nav { 
+      display: flex;
+      align-items: center;
+    }
+    
+    nav ul { 
+      list-style: none; 
+      display: flex; 
+      flex-wrap: wrap;
+      gap: 10px; 
+    }
+    
     nav ul li { position: relative; }
+    
     nav ul li a {
       color: #fff;
       text-decoration: none;
-      padding: 10px 20px;
+      padding: 8px 12px;
       display: block;
-      background-color: #0d1f54;
-      border-radius: 50px;
       font-weight: bold;
-      transition: background-color 0.3s ease;
+      transition: color 0.3s ease;
+    }
+
+    /* Responsive grids */
+    .service-grid, .explore-grid, .portfolio-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+    }
+
+    .service-card, .explore-card {
+      flex: 1 1 250px;
+      min-width: 0;
+      max-width: 300px;
+    }
+
+    .portfolio-item {
+      flex: 1 1 200px;
+      min-width: 0;
+      max-width: 250px;
+    }
+
+    /* Responsive images */
+    img {
+      max-width: 100%;
+      height: auto;
+    }
+
+    /* Responsive popup */
+    .popup {
+      width: 90%;
+      max-width: 400px;
+    }
+
+    /* Media queries */
+    @media (max-width: 992px) {
+      .service-card, .explore-card {
+        flex: 1 1 calc(33.333% - 20px);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .header-content {
+        flex-direction: column;
+        text-align: center;
+      }
+      
+      nav ul {
+        justify-content: center;
+      }
+      
+      .hero h2 {
+        font-size: 2rem;
+      }
+      
+      .service-card, .explore-card {
+        flex: 1 1 calc(50% - 20px);
+      }
+    }
+
+    @media (max-width: 480px) {
+      nav ul {
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+      }
+      
+      nav ul li {
+        width: 100%;
+        text-align: center;
+      }
+      
+      .hero h2 {
+        font-size: 1.5rem;
+      }
+      
+      .hero p {
+        font-size: 1rem;
+      }
+      
+      .service-card, .explore-card, .portfolio-item {
+        flex: 1 1 100%;
+        max-width: 100%;
+      }
+      
+      section {
+        padding: 40px 0;
+      }
     }
 
     nav ul li a:hover {
-      background-color: #FF9A3E;
+      color: #FF9A3E;
     }
 
     nav ul li:hover > .dropdown {
@@ -209,6 +297,35 @@ nav {
       max-width: 300px;
       border-radius: 10px;
       box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      transition: all 0.3s ease;
+      position: relative;
+      top: 0;
+    }
+    
+    .service-card:hover {
+      top: -10px;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+      transform: translateY(-5px);
+      cursor: pointer;
+    }
+    
+    /* Optional: Add a subtle glow effect */
+    .service-card:hover {
+      box-shadow: 0 10px 25px rgba(255, 122, 69, 0.3);
+    }
+    
+    /* Optional: Add a subtle background color change */
+    .service-card:hover {
+      background: #f9f9f9;
+    }
+    
+    /* Optional: Make the image slightly larger on hover */
+    .service-card img {
+      transition: transform 0.3s ease;
+    }
+    
+    .service-card:hover img {
+      transform: scale(1.1);
     }
 
     .job-listing {
@@ -455,186 +572,209 @@ nav {
   </script>
 </head>
 <body>
-  <div class="popup" id="updatePopup">
-   <img src="assets/phonelogo.jpg" alt="Specific inquiries:" />
-    <p>📢 Check out today's updates at Uperise!</p>
-	<p>Sai Sathish</p>
-	<p>Marketing Director</p>
-	<p> Email : sai@uperise.com</p>
-    <button id="closePopup">Close</button>
-  </div>
+  <div class="page-wrapper">
+    <header>
+      <div class="container">
+        <div class="header-content">
+          <a href="index.html" class="logo">
+            <img src="assets/logo2.png" alt="Company Logo" style="max-width: 200px; height: auto;">
+          </a>
+          <nav>
+            <ul>
+              <li><a href="#">Home</a></li>
+              <li><a href="#services">Services</a></li>
+              <li><a href="#careers">Careers</a></li>
+              <li><a href="#about">About Us</a></li>
+              <li><a href="#company">Company Profile</a></li>
+              <li><a href="#locations">Locations</a></li>
+              <li><a href="#contact">Contact</a></li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </header>
+
+    <div class="popup" id="updatePopup">
+     <img src="assets/phonelogo.jpg" alt="Specific inquiries:" />
+      <p>📢 Check out today's updates at Uperise!</p>
+      <p>Sai Sathish</p>
+      <p>Marketing Director</p>
+      <p> Email : sai@uperise.com</p>
+      <button id="closePopup">Close</button>
+    </div>
 
   
-  <section class="hero">
+    <section class="hero">
+      <div class="container">
+        <h2>Empowering Business with Innovative Software</h2>
+        <p>Custom software, analytics, and IT solutions tailored to your growth.</p>
+        <a href="#services" class="btn">Explore Services</a>
+      </div>
+    </section>
+
+    <section class="explore" id="explore">
+      <div class="container">
+        <h3>Why UPERISE</h3>
+        <h3>Empowering people and organizations to conquer new frontiers.</h3>
+        <div class="explore-grid">
+          <div class="explore-card">
+            <img src="https://cdn-icons-png.flaticon.com/512/847/847969.png" alt="Expertise Icon">
+            <h4>IT Consulting</h4>
+            <p>Strategic IT guidance for scalable, secure, and modern infrastructure.</p>
+          </div>
+          <div class="explore-card">
+            <img src="https://cdn-icons-png.flaticon.com/512/847/847969.png" alt="Expertise Icon">
+            <h4>Data Analytics</h4>
+            <p>Transform data into insights with BI, dashboards, and reporting solutions.</p>
+          </div>
+          <div class="explore-card">
+            <img src="https://cdn-icons-png.flaticon.com/512/847/847969.png" alt="Expertise Icon">
+            <h4>Application Modernization</h4>
+            <p>Revamp legacy systems for better performance, security, and user experience.</p>
+          </div>
+          <div class="explore-card">
+            <img src="https://cdn-icons-png.flaticon.com/512/847/847969.png" alt="Expertise Icon">
+            <h4>Training & Upskilling</h4>
+            <p>Hands-on courses in analytics, development, and digital tools.</p>
+          </div>
+          <div class="explore-card">
+            <img src="https://cdn-icons-png.flaticon.com/512/847/847969.png" alt="Expertise Icon">
+            <h4>Tax & Accounting Solutions</h4>
+            <p>Automation and digital tools for GST, income tax, and compliance.</p>
+          </div>
+          <div class="explore-card">
+            <img src="https://cdn-icons-png.flaticon.com/512/847/847969.png" alt="Expertise Icon">
+            <h4>Marketing Services</h4>
+            <p>Digital-first strategies to grow your brand across online platforms.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+
+    <section class="services" id="services">
+      <div class="container">
+        <h3>Our Services</h3>
+        <div class="service-grid">
+          <div class="service-card">
+            <img src="https://cdn-icons-png.flaticon.com/512/609/609803.png" alt="Web Development">
+            <h4>Functionally Beautiful Websites</h4>
+            <p>Design-driven development for high-conversion business websites.</p>
+          </div>
+          <div class="service-card">
+            <img src="https://cdn-icons-png.flaticon.com/512/1038/1038670.png" alt="UX/UI Design">
+            <h4>UX/UI Design</h4>
+            <p>Intuitive, aesthetic, and user-first design solutions for mobile and web.</p>
+          </div>
+          <div class="service-card">
+            <img src="https://cdn-icons-png.flaticon.com/512/1010/1010982.png" alt="Digital Marketing">
+            <h4>Digital Marketing</h4>
+            <p>Boost your online presence with SEO, PPC, and content strategy.</p>
+          </div>
+          <div class="service-card">
+            <img src="https://cdn-icons-png.flaticon.com/512/2504/2504941.png" alt="Web Hosting">
+            <h4>Web Hosting</h4>
+            <p>Reliable and secure web hosting services with 99.9% uptime.</p>
+          </div>
+          <div class="service-card">
+            <img src="https://cdn-icons-png.flaticon.com/512/3064/3064197.png" alt="Web Applications">
+            <h4>Web Applications</h4>
+            <p>Scalable web applications tailored to your business needs.</p>
+          </div>
+          <div class="service-card">
+            <img src="https://cdn-icons-png.flaticon.com/512/1674/1674291.png" alt="Mobile Apps">
+            <h4>Mobile Apps</h4>
+            <p>Native and hybrid mobile apps for iOS and Android platforms.</p>
+          </div>
+          <div class="service-card">
+            <img src="https://cdn-icons-png.flaticon.com/512/3142/3142100.png" alt="eCommerce">
+            <h4>eCommerce</h4>
+            <p>Custom eCommerce solutions to grow your online store.</p>
+          </div>
+          <div class="service-card">
+            <img src="https://cdn-icons-png.flaticon.com/512/906/906343.png" alt="CMS">
+            <h4>CMS</h4>
+            <p>Manage your content easily with powerful CMS platforms.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <section class="about" id="about">
+      <div class="container">
+          <h3>About US</h3>
+          <p><strong>Company Name:</strong> Uperise IT Consulting Private Limited</p>
+          
+          <p><strong>Founded:</strong> 8 January 2024</p>
+          <p><strong>What We Provide:</strong> Web and Mobile Applications; Software Testing; Microsoft Dynamics; Consulting Services; BPO;  Hosting and Digital Marketing; Loan Recovery Agency.  </p>
+          <p><strong>Employee Strength:</strong> 25+ skilled professionals</p>
+          <p><strong>Locations:</strong> Nellore (HQ), Hyderabad, Bangalore – India</p>
+        </div>
+      </section>
+
+
+
+
+    <section id="contact">
+      <div class="container" style="text-align: center;">
+        <!-- Logo -->
+        <img src="assets/Company_logo.jpg" alt="Uperise Logo" style="max-width: 150px; margin-bottom: 20px;">
+
+
+    <section class="careers" id="careers">
     <div class="container">
-      <h2>Empowering Business with Innovative Software</h2>
-      <p>Custom software, analytics, and IT solutions tailored to your growth.</p>
-      <a href="#services" class="btn">Explore Services</a>
+      <h3>Careers at Uperise</h3>
+      <p>Join our dynamic team and be part of building innovative solutions.</p>
+      <div class="job-listing">
+        <div class="job">
+          <h4>Frontend Developer (Remote)</h4>
+          <div class="job-details">
+            <p><strong>Skills:</strong> HTML, CSS, JavaScript, React</p>
+            <p><strong>Experience:</strong> 0 - 1+ Years</p>
+            <p><strong>To Apply:</strong> Email your resume to <a href="mailto:hr@uperise.com">hr@uperise.com</a></p>
+          </div>
+        </div>
+        <div class="job">
+          <h4>Data Analyst <span class="badge closed">Closed</span></h4>
+          <div class="job-details">
+            <p><strong>Skills:</strong> SQL, Power BI, Excel</p>
+            <p><strong>Experience:</strong> Internship</p>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
-<section class="explore" id="explore">
-  <div class="container">
-    <h3>Why UPERISE</h3>
-	<h3>Empowering people and organizations to conquer new frontiers.</h3>
-    <div class="explore-grid">
-      <div class="explore-card">
-        <img src="https://cdn-icons-png.flaticon.com/512/847/847969.png" alt="Expertise Icon">
-        <h4>IT Consulting</h4>
-        <p>Strategic IT guidance for scalable, secure, and modern infrastructure.</p>
-      </div>
-      <div class="explore-card">
-        <img src="https://cdn-icons-png.flaticon.com/512/847/847969.png" alt="Expertise Icon">
-        <h4>Data Analytics</h4>
-        <p>Transform data into insights with BI, dashboards, and reporting solutions.</p>
-      </div>
-      <div class="explore-card">
-        <img src="https://cdn-icons-png.flaticon.com/512/847/847969.png" alt="Expertise Icon">
-        <h4>Application Modernization</h4>
-        <p>Revamp legacy systems for better performance, security, and user experience.</p>
-      </div>
-      <div class="explore-card">
-        <img src="https://cdn-icons-png.flaticon.com/512/847/847969.png" alt="Expertise Icon">
-        <h4>Training & Upskilling</h4>
-        <p>Hands-on courses in analytics, development, and digital tools.</p>
-      </div>
-      <div class="explore-card">
-        <img src="https://cdn-icons-png.flaticon.com/512/847/847969.png" alt="Expertise Icon">
-        <h4>Tax & Accounting Solutions</h4>
-        <p>Automation and digital tools for GST, income tax, and compliance.</p>
-      </div>
-      <div class="explore-card">
-        <img src="https://cdn-icons-png.flaticon.com/512/847/847969.png" alt="Expertise Icon">
-        <h4>Marketing Services</h4>
-        <p>Digital-first strategies to grow your brand across online platforms.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-
-
-  <section class="services" id="services">
+  <section class="portfolio" id="portfolio">
     <div class="container">
-      <h3>Our Services</h3>
-      <div class="service-grid">
-        <div class="service-card">
-          <img src="https://cdn-icons-png.flaticon.com/512/609/609803.png" alt="Web Development">
-          <h4>Functionally Beautiful Websites</h4>
-          <p>Design-driven development for high-conversion business websites.</p>
+      <h3>Our Portfolio</h3>
+      <div class="portfolio-grid">
+        <div class="portfolio-item">
+          <a href=https://atmos24.in/ target="_blank">
+            <img src="assets/atmos.jpg" alt=>
+            <p>ATMOS24</p>
+          </a>
         </div>
-        <div class="service-card">
-          <img src="https://cdn-icons-png.flaticon.com/512/1038/1038670.png" alt="UX/UI Design">
-          <h4>UX/UI Design</h4>
-          <p>Intuitive, aesthetic, and user-first design solutions for mobile and web.</p>
+        <div class="portfolio-item">
+          <a href=https://shrivaaz.com/ target="_blank">
+            <img src="assets/shivaraaz.jpg" alt="Project 2">
+            <p>SHRIVAAZ</p>
+          </a>
         </div>
-        <div class="service-card">
-          <img src="https://cdn-icons-png.flaticon.com/512/1010/1010982.png" alt="Digital Marketing">
-          <h4>Digital Marketing</h4>
-          <p>Boost your online presence with SEO, PPC, and content strategy.</p>
-        </div>
-        <div class="service-card">
-          <img src="https://cdn-icons-png.flaticon.com/512/2504/2504941.png" alt="Web Hosting">
-          <h4>Web Hosting</h4>
-          <p>Reliable and secure web hosting services with 99.9% uptime.</p>
-        </div>
-        <div class="service-card">
-          <img src="https://cdn-icons-png.flaticon.com/512/3064/3064197.png" alt="Web Applications">
-          <h4>Web Applications</h4>
-          <p>Scalable web applications tailored to your business needs.</p>
-        </div>
-        <div class="service-card">
-          <img src="https://cdn-icons-png.flaticon.com/512/1674/1674291.png" alt="Mobile Apps">
-          <h4>Mobile Apps</h4>
-          <p>Native and hybrid mobile apps for iOS and Android platforms.</p>
-        </div>
-        <div class="service-card">
-          <img src="https://cdn-icons-png.flaticon.com/512/3142/3142100.png" alt="eCommerce">
-          <h4>eCommerce</h4>
-          <p>Custom eCommerce solutions to grow your online store.</p>
-        </div>
-        <div class="service-card">
-          <img src="https://cdn-icons-png.flaticon.com/512/906/906343.png" alt="CMS">
-          <h4>CMS</h4>
-          <p>Manage your content easily with powerful CMS platforms.</p>
-        </div>
+        <!-- Add more items as needed -->
       </div>
     </div>
   </section>
 
 
-<section class="about" id="about">
-  <div class="container">
-      <h3>About US</h3>
-      <p><strong>Company Name:</strong> Uperise IT Consulting Private Limited</p>
-      
-      <p><strong>Founded:</strong> 8 January 2024</p>
-      <p><strong>What We Provide:</strong> Web and Mobile Applications; Software Testing; Microsoft Dynamics; Consulting Services; BPO;  Hosting and Digital Marketing; Loan Recovery Agency.  </p>
-      <p><strong>Employee Strength:</strong> 25+ skilled professionals</p>
-      <p><strong>Locations:</strong> Nellore (HQ), Hyderabad, Bangalore – India</p>
+
+    <footer id="contact">
+      <div class="container">
+        <p>Visit us at <a href="https://www.uperise.com" style="color: #fff; text-decoration: underline;">www.uperise.com</a> | Contact us at <a href="mailto:info@uperise.com" style="color: #fff; text-decoration: underline;">info@uperise.com</a> | Mobile +91 7674050595</p>
     </div>
-  </section>
-
-
-
-
-<section id="contact">
-  <div class="container" style="text-align: center;">
-    <!-- Logo -->
-    <img src="assets/Company_logo.jpg" alt="Uperise Logo" style="max-width: 150px; margin-bottom: 20px;">
-
-
-  <section class="careers" id="careers">
-  <div class="container">
-    <h3>Careers at Uperise</h3>
-    <p>Join our dynamic team and be part of building innovative solutions.</p>
-    <div class="job-listing">
-      <div class="job">
-        <h4>Frontend Developer (Remote)</h4>
-        <div class="job-details">
-          <p><strong>Skills:</strong> HTML, CSS, JavaScript, React</p>
-          <p><strong>Experience:</strong> 0 - 1+ Years</p>
-          <p><strong>To Apply:</strong> Email your resume to <a href="mailto:hr@uperise.com">hr@uperise.com</a></p>
-        </div>
-      </div>
-      <div class="job">
-        <h4>Data Analyst <span class="badge closed">Closed</span></h4>
-        <div class="job-details">
-          <p><strong>Skills:</strong> SQL, Power BI, Excel</p>
-          <p><strong>Experience:</strong> Internship</p>
-        </div>
-      </div>
-    </div>
+    </footer>
   </div>
-</section>
-
-<section class="portfolio" id="portfolio">
-  <div class="container">
-    <h3>Our Portfolio</h3>
-    <div class="portfolio-grid">
-      <div class="portfolio-item">
-        <a href=https://atmos24.in/ target="_blank">
-          <img src="assets/atmos.jpg" alt=>
-          <p>ATMOS24</p>
-        </a>
-      </div>
-      <div class="portfolio-item">
-        <a href=https://shrivaaz.com/ target="_blank">
-          <img src="assets/shivaraaz.jpg" alt="Project 2">
-          <p>SHRIVAAZ</p>
-        </a>
-      </div>
-      <!-- Add more items as needed -->
-    </div>
-  </div>
-</section>
-
-
-
-  <footer id="contact">
-    <div class="container">
-      <p>Visit us at <a href="https://www.uperise.com" style="color: #fff; text-decoration: underline;">www.uperise.com</a> | Contact us at <a href="mailto:info@uperise.com" style="color: #fff; text-decoration: underline;">info@uperise.com</a> | Mobile +91 7674050595</p>
-</div>
-</footer>
 </body>
 </html>
