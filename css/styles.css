@@ -130,6 +130,7 @@ header {
 .header-content {
   display: flex;
   align-items: center;
+  justify-content: space-between; /* This pushes logo left and nav right */
   width: 100%;
 }
 
@@ -137,7 +138,7 @@ header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: 100%;
+  width: auto; /* Only take needed space */
 }
 
 .logo {
@@ -189,20 +190,11 @@ header {
 }
 
 @media (min-width: 769px) {
-  .header-content {
-    justify-content: flex-start; /* Align items to the left */
-  }
-  
-  .logo-menu-container {
-    width: auto; /* Only take up needed space */
-    margin-right: 30px; /* Add space between logo and nav */
-  }
-  
   nav {
     display: block;
     position: static;
     width: auto;
-    margin-left: 0; /* Reset margin */
+    margin-left: auto; /* Push nav to the right */
   }
   
   nav ul {
@@ -211,7 +203,12 @@ header {
   }
   
   nav ul li {
-    margin-left: 20px;
+    margin-left: 30px; /* Increased spacing between nav items */
+  }
+  
+  /* First nav item shouldn't have left margin */
+  nav ul li:first-child {
+    margin-left: 0;
   }
   
   nav ul li a {
@@ -219,6 +216,7 @@ header {
     text-decoration: none;
     font-size: 1rem;
     transition: color 0.3s ease;
+    padding: 5px 0; /* Add some vertical padding */
   }
   
   nav ul li a:hover {
@@ -824,6 +822,8 @@ footer {
     padding: 10px;
   }
 }
+
+
 
 
 
