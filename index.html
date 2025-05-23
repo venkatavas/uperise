@@ -2,571 +2,42 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>Uperise - Software Solutions</title>
-  <style>
-    /* Base responsive styles */
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body, html { 
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
-      line-height: 1.2;
-      overflow-x: hidden;
-    }
-    
-    .container { 
-      width: 90%; 
-      max-width: 1200px; 
-      margin: 0 auto; 
-      padding: 0 15px;
-    }
-
-    .page-wrapper {
-      width: 100%;
-      max-width: 100%;
-      overflow-x: hidden;
-    }
-    
-    /* Responsive header */
-    header {
-      background-color: #0d1f54;
-      color: #fff;
-      padding: 15px 10px;
-      width: 100%;
-    }
-
-    .header-content {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 15px;
-    }
-
-    .logo img {
-      max-width: 100px;
-      height: auto;
-    }
-
-    /* Responsive navigation */
-    nav { 
-      display: flex;
-      align-items: center;
-    }
-    
-    nav ul { 
-      list-style: none; 
-      display: flex; 
-      flex-wrap: wrap;
-      gap: 10px; 
-    }
-    
-    nav ul li { position: relative; }
-    
-    nav ul li a {
-      color: #fff;
-      text-decoration: none;
-      padding: 8px 12px;
-      display: block;
-      font-weight: bold;
-      transition: color 0.3s ease;
-    }
-
-    /* Responsive grids */
-    .service-grid, .explore-grid, .portfolio-grid {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 20px;
-      justify-content: center;
-    }
-
-    .service-card, .explore-card {
-      flex: 1 1 250px;
-      min-width: 0;
-      max-width: 300px;
-    }
-
-    .portfolio-item {
-      flex: 1 1 200px;
-      min-width: 0;
-      max-width: 250px;
-    }
-
-    /* Responsive images */
-    img {
-      max-width: 100%;
-      height: auto;
-    }
-
-    /* Responsive popup */
-    .popup {
-      width: 90%;
-      max-width: 400px;
-    }
-
-    /* Media queries */
-    @media (max-width: 992px) {
-      .service-card, .explore-card {
-        flex: 1 1 calc(33.333% - 20px);
-      }
-    }
-
-    @media (max-width: 768px) {
-      .header-content {
-        flex-direction: column;
-        text-align: center;
-      }
-      
-      nav ul {
-        justify-content: center;
-      }
-      
-      .hero h2 {
-        font-size: 2rem;
-      }
-      
-      .service-card, .explore-card {
-        flex: 1 1 calc(50% - 20px);
-      }
-    }
-
-    @media (max-width: 480px) {
-      nav ul {
-        flex-direction: column;
-        align-items: center;
-        width: 100%;
-      }
-      
-      nav ul li {
-        width: 100%;
-        text-align: center;
-      }
-      
-      .hero h2 {
-        font-size: 1.5rem;
-      }
-      
-      .hero p {
-        font-size: 1rem;
-      }
-      
-      .service-card, .explore-card, .portfolio-item {
-        flex: 1 1 100%;
-        max-width: 100%;
-      }
-      
-      section {
-        padding: 40px 0;
-      }
-    }
-
-    nav ul li a:hover {
-      color: #FF9A3E;
-    }
-
-    nav ul li:hover > .dropdown {
-      display: flex;
-    }
-
-    .dropdown {
-      position: absolute;
-      top: 60px;
-      left: 0;
-      background: #1b1b2f;
-      display: none;
-      padding: 20px;
-      border-radius: 10px;
-      z-index: 1000;
-      gap: 40px;
-    }
-
-    .dropdown-column strong {
-      color: white;
-      display: block;
-      margin-bottom: 10px;
-      font-size: 1.1rem;
-    }
-
-    .dropdown-column ul {
-      list-style: none;
-    }
-
-    .dropdown-column ul li a {
-      background-color: #0d1f54;
-      color: #fff;
-      border-radius: 8px;
-      padding: 8px 12px;
-      margin-bottom: 5px;
-      display: block;
-      text-decoration: none;
-      font-size: 0.95rem;
-    }
-
-    .dropdown-column ul li a:hover {
-      background-color: #0d1f54;
-    }
-
-    .contact-hover, .location-hover {
-      position: absolute;
-      top: 60px;
-      left: 0;
-      background: #0d1f54;
-      color: #ff7a45;
-      padding: 15px;
-      display: none;
-      border-radius: 10px;
-      z-index: 1000;
-      font-size: 0.95rem;
-      white-space: nowrap;
-    }
-
-    nav ul li:hover .contact-hover,
-    nav ul li:hover .location-hover {
-      display: block;
-    }
-
-    .hero {
-      background: url('https://i.pinimg.com/originals/d7/64/c7/d764c70776b64e523cb4eea2f322db96.gif') no-repeat center center/cover;
-      color: #fff;
-      text-align: center;
-      padding: 100px 20px;
-      clear: both;
-    }
- 
-    .hero h2 { font-size: 2.8rem; margin-bottom: 10px; text-shadow: 1px 1px 4px #000; }
-    .hero p { font-size: 1.2rem; margin-bottom: 20px; text-shadow: 1px 1px 4px #000; }
-    .btn { padding: 10px 20px; background-color: #ff7a45; color: #fff; text-decoration: none; border-radius: 5px; }
-
-
-    .popup {
-      position: fixed;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      background-color: #ff7a45;
-      box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
-      padding: 30px;
-      border-radius: 10px;
-      z-index: 2000;
-      display: none;
-      text-align: center;
-    }
-
-    .popup img {
-      max-width: 300px;
-      height: auto;
-    }
-
-    .popup button {
-      margin-top: 15px;
-      padding: 8px 16px;
-      background-color: #0074D9;
-      color: white;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-
-    .popup button:hover {
-      background-color: #005fa3;
-    }
-
-    section {
-      padding: 60px 0;
-      background-color: #f4f4f4;
-      text-align: center;
-    }
-
-    .services img, .careers img, .culture img {
-      width: 100px;
-      margin-bottom: 15px;
-    }
-
-    .service-grid {
-      display: flex;
-      gap: 20px;
-      justify-content: center;
-      flex-wrap: wrap;
-      margin-top: 30px;
-    }
-
-    .service-card {
-      background: #fff;
-      padding: 20px;
-      flex: 1;
-      min-width: 250px;
-      max-width: 300px;
-      border-radius: 10px;
-      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-      transition: all 0.3s ease;
-      position: relative;
-      top: 0;
-    }
-    
-    .service-card:hover {
-      top: -10px;
-      box-shadow: 0 10px 20px rgba(0,0,0,0.15);
-      transform: translateY(-5px);
-      cursor: pointer;
-    }
-    
-    /* Optional: Add a subtle glow effect */
-    .service-card:hover {
-      box-shadow: 0 10px 25px rgba(255, 122, 69, 0.3);
-    }
-    
-    /* Optional: Add a subtle background color change */
-    .service-card:hover {
-      background: #f9f9f9;
-    }
-    
-    /* Optional: Make the image slightly larger on hover */
-    .service-card img {
-      transition: transform 0.3s ease;
-    }
-    
-    .service-card:hover img {
-      transform: scale(1.1);
-    }
-
-    .job-listing {
-      margin: 20px auto;
-      max-width: 700px;
-      text-align: left;
-    }
-
-    .job {
-      background: #fff;
-      border-radius: 8px;
-      margin-bottom: 10px;
-      padding: 15px;
-      cursor: pointer;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    }
-
-    .job:hover { background: #e8f0fe; }
-
-    .job-details {
-      display: none;
-      margin-top: 10px;
-    }
-
-    .job.open .job-details {
-      display: block;
-    }
-.job {
-  background: #fff;
-  border-left: 5px solid #ff7a45;
-  border-radius: 8px;
-  margin-bottom: 15px;
-  padding: 20px;
-  cursor: pointer;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.08);
-  transition: all 0.3s ease-in-out;
-  position: relative;
-}
-
-.job:hover {
-  transform: translateY(-3px);
-  background-color: #ff4f6d;
-}
-
-.job h4 {
-  font-size: 1.2rem;
-  margin-bottom: 5px;
-  color: #0d1f54;
-}
-
-.job-details {
-  display: none;
-  margin-top: 15px;
-  font-size: 0.95rem;
-}
-
-.job.open .job-details {
-  display: block;
-}
-
-.badge {
-  padding: 3px 8px;
-  font-size: 0.75rem;
-  border-radius: 50px;
-  margin-left: 10px;
-}
-
-.badge.closed {
-  background: #ccc;
-  color: #333;
-}
-
-.badge.open {
-  background: #4CAF50;
-  color: #fff;
-}
-
-.job-details a {
-  display: inline-block;
-  margin-top: 10px;
-  background: #0074D9;
-  color: #fff;
-  padding: 6px 12px;
-  text-decoration: none;
-  border-radius: 5px;
-  transition: background 0.3s ease;
-}
-
-.job-details a:hover {
-  background: #005fa3;
-}
-
-    footer {
-      background: #0d1f54;
-      color: #fff;
-      text-align: center;
-      padding: 20px 0;
-      margin-top: 80px;
-    }
-.explore {
-  background-color: #fff;
-  padding: 60px 0;
-  text-align: center;
-}
-
-.explore-grid {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-  justify-content: center;
-  margin-top: 30px;
-}
-
-.explore-card {
-  background: #7ad1ff;
-  padding: 20px;
-  min-width: 250px;
-  max-width: 300px;
-  flex: 1;
-  border-radius: 10px;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-  transition: transform 0.2s ease;
-}
-
-.explore-card:hover {
-  transform: translateY(-5px);
-}
-
-.explore-card h4 {
-  color: #0d1f54;
-  margin-bottom: 10px;
-}
-
-.explore-card p {
-  font-size: 0.95rem;
-  color: #333;
-}
-
-.explore-card img {
-  width: 50px;
-  height: auto;
-  margin-bottom: 10px;
-}
-
-.about {
-  background-image: url('assets/logo.jpg'); 
-  background-size: cover;
-  background-position: center;
-  color:whitesmoke;
-  padding: 80px 20px;
-  position: relative;
-}
-
-.about::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 24, 64, 0.6); 
-  z-index: 0;
-}
-
-.about .container {
-  position: relative;
-  z-index: 1;
-  text-align: center;
-}
-
-.about h3 {
-  font-size: 2.2rem;
-  margin-bottom: 20px;
-}
-
-.about p {
-  font-size: 1.1rem;
-  max-width: 800px;
-  margin: 0 auto;
-  line-height: 1.6;
-}
-
-.portfolio {
-  background-color: #fff;
-  padding: 60px 0;
-  text-align: center;
-}
-
-.portfolio h3 {
-  font-size: 2rem;
-  color: #0d1f54;
-  margin-bottom: 40px;
-}
-
-.portfolio-grid {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 30px;
-}
-
-.portfolio-item {
-  background: #f9f9f9;
-  border-radius: 10px;
-  overflow: hidden;
-  width: 250px;
-  transition: transform 0.3s;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-}
-
-.portfolio-item:hover {
-  transform: scale(1.05);
-}
-
-.portfolio-item img {
-  width: 100%;
-  height: 180px;
-  object-fit: cover;
-}
-
-.portfolio-item p {
-  margin: 10px 0;
-  font-weight: bold;
-  color: #0d1f54;
-  text-decoration: none;
-}
-
-/* ... Above all full CSS  ... */
-  
-</style>
+  <link rel="stylesheet" href="css/styles.css">
+  <!-- Add this for better responsive behavior -->
+  <meta name="theme-color" content="#0d1f54">
   <script>
-    document.addEventListener('DOMContentLoaded', () => {
+    document.addEventListener('DOMContentLoaded', function() {
+      // Job toggle functionality
       document.querySelectorAll('.job').forEach(job => {
         job.addEventListener('click', () => job.classList.toggle('open'));
       });
 
+      // Popup functionality
       const popup = document.getElementById('updatePopup');
       const closeBtn = document.getElementById('closePopup');
       popup.style.display = 'block';
       closeBtn.addEventListener('click', () => {
         popup.style.display = 'none';
+      });
+      
+      // Mobile menu functionality - simplified
+      const menuButton = document.getElementById('mobile-menu-button');
+      const mainNav = document.getElementById('main-nav');
+      
+      menuButton.addEventListener('click', function() {
+        mainNav.classList.toggle('active');
+        document.body.classList.toggle('menu-open');
+      });
+      
+      // Close menu when clicking a link
+      const navLinks = mainNav.querySelectorAll('a');
+      navLinks.forEach(link => {
+        link.addEventListener('click', function() {
+          mainNav.classList.remove('active');
+          document.body.classList.remove('menu-open');
+        });
       });
     });
   </script>
@@ -576,10 +47,23 @@
     <header>
       <div class="container">
         <div class="header-content">
-          <a href="index.html" class="logo">
-            <img src="assets/logo2.png" alt="Company Logo" style="max-width: 200px; height: auto;">
-          </a>
-          <nav>
+          <!-- Logo and hamburger in the same container -->
+          <div class="logo-menu-container">
+            <!-- Logo on the left -->
+            <a href="index.html" class="logo">
+              <img src="assets/logo2.png" alt="Company Logo">
+            </a>
+            
+            <!-- Hamburger button on the right -->
+            <button class="mobile-menu-button" id="mobile-menu-button">
+              <span></span>
+              <span></span>
+              <span></span>
+            </button>
+          </div>
+          
+          <!-- Navigation menu -->
+          <nav id="main-nav">
             <ul>
               <li><a href="#">Home</a></li>
               <li><a href="#services">Services</a></li>
